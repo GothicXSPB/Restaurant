@@ -23,7 +23,7 @@ namespace Restaurant
             }
         }
 
-        public void ReserveATable(int id, string customerName, string customerTelephon, string date, string time, int numberofguests)
+        public void ReserveATable(int tableNumber, int id, string customerName, string customerTelephon, string date, string time, int numberofguests)
         {
             reservtions.Add(new Reservations(id, customerName, customerTelephon, date, time, numberofguests));  
         }
@@ -36,6 +36,14 @@ namespace Restaurant
                 {
                     reservtions.Remove(i);
                 }
+            }
+        }
+
+        public void ShowReservations()
+        {
+            foreach(Reservations i in reservtions)
+            {
+                Console.WriteLine($"Номер стола:{i.TableNumber} Id:{i.Id} Имя:{i.CustomerName} Телефон:{i.CustomerTelephon} Дата:{i.Date} Время:{i.Time} Кол-во гостей:{i.NumberOfGuests}");
             }
         }
     }

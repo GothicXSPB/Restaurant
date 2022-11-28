@@ -25,7 +25,12 @@ namespace Restaurant
 
         public Reservations(int id, string customerName, string customerTelephon, string date, string time, int numberofguests)
         {
-
+            Id= id;
+            CustomerName= customerName;
+            CustomerTelephon= customerTelephon;
+            Date= date;
+            Time= time;
+            NumberOfGuests= numberofguests;
         }
     }
 }
