@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Restaurant
+﻿namespace Restaurant
 {
     public class Tables
     {
-        public int number { get; private set; }
+        public int Number { get; private set; }
 
-        public int seats { get; set; }
+        public int Seats { get; set; }
 
         public Tables(int number, int seats)
-        { }
-        
+        {
+            Number = number;
+            Seats = seats;
+        }
     }
 }
