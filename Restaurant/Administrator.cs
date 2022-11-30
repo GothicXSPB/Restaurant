@@ -3,47 +3,75 @@ namespace Restaurant
 {
     public class Administrator
     {
-        List<Tables> tables = new List<Tables>();
-
-        List<Reservations> reservtions = new List<Reservations>();
-
-        public void BuyTable(int number, int seats)
+        public Storage _storage { get; set; }      
+        
+        public Administrator()
         {
-            tables.Add(new Tables(number, seats));
+            _storage = new Storage();
+            _storage.LoadAll();
+        }
+
+        public void BuyTable(Tables table)
+        {
+            _storage.Tables.Add(table);
+            _storage.SaveAll();
         }
 
         public void WriteOffTheTable(int number)
         {
-            foreach (Tables i in tables)
-            {
-                if (i.Number == number)
-                {
-                    tables.Remove(i);
-                }
-            }
+            _storage.Tables.RemoveAt(number);
+            _storage.SaveAll();
         }
 
-        public void ReserveATable(int tableNumber, int id, string customerName, string customerTelephon, string date, string time, int numberofguests)
+        public void ReserveATable(Reservations reservations)
         {
-            reservtions.Add(new Reservations(id, customerName, customerTelephon, date, time, numberofguests));  
+
+            _storage.Reservations.Add(reservations);
+            _storage.SaveAll();
         }
 
         public void CancelYourReserve(int id)
         {
-            foreach (Reservations i in reservtions)
+            _storage.Reservations.RemoveAt(id);
+            _storage.SaveAll();
+        }
+
+        public void ShowReservations(List<Reservations> Reservtions)
+        {
+            foreach(Reservations i in Reservtions)
             {
-                if (i.Id == id)
-                {
-                    reservtions.Remove(i);
-                }
+                Console.WriteLine($"Номер стола:{i.TableNumber} Id:{i.Id} Имя:{i.CustomerName} Телефон:{i.CustomerTelephon} Дата:{i.Date} Время:{i.Time} Кол-во гостей:{i.NumberOfGuests}");
+            }
+        }
+        
+        public void ShowReservationsAtDay(List<Reservations> Reservtions,string date)
+        {
+            foreach(Reservations i in Reservtions)
+            {
+                if(i.Date==date)
+                Console.WriteLine($"Номер стола:{i.TableNumber} Id:{i.Id} Имя:{i.CustomerName} Телефон:{i.CustomerTelephon} Дата:{i.Date} Время:{i.Time} Кол-во гостей:{i.NumberOfGuests}");
             }
         }
 
-        public void ShowReservations()
+        public void ShowReservationsForThatTable(List<Reservations> Reservtions, int tableNumber)
         {
-            foreach(Reservations i in reservtions)
+            foreach (Reservations i in Reservtions)
             {
-                Console.WriteLine($"Номер стола:{i.TableNumber} Id:{i.Id} Имя:{i.CustomerName} Телефон:{i.CustomerTelephon} Дата:{i.Date} Время:{i.Time} Кол-во гостей:{i.NumberOfGuests}");
+                if (i.TableNumber == tableNumber)
+                    Console.WriteLine($"Номер стола:{i.TableNumber} Id:{i.Id} Имя:{i.CustomerName} Телефон:{i.CustomerTelephon} Дата:{i.Date} Время:{i.Time} Кол-во гостей:{i.NumberOfGuests}");
+            }
+        }
+
+        public void FindingSuitableTables(List<Reservations> Reservtions, List<Reservations> Tables, int numberOfGuests)
+        {
+            
+            foreach (Reservations i in Reservtions)
+            {
+                if (i.TableNumber == null)
+                {
+
+                }
+                    
             }
         }
     }

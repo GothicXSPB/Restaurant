@@ -2,7 +2,7 @@
 {
     public class Tables
     {
-        public int Number { get; private set; }
+        public int Number { get; set; }
 
         public int Seats { get; set; }
 

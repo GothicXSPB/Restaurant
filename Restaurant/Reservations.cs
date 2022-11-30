@@ -23,14 +23,15 @@ namespace Restaurant
 
         public int Id { get; set; }
 
-        public Reservations(int id, string customerName, string customerTelephon, string date, string time, int numberofguests)
+        public Reservations(int tableNumber,int id, string customerName, string customerTelephon, string date, string time, int numberofguests)
         {
-            Id= id;
+            TableNumber = tableNumber;
+            Id = id;
             CustomerName= customerName;
             CustomerTelephon= customerTelephon;
             Date= date;
             Time= time;
             NumberOfGuests= numberofguests;
-        }
+        }        
     }
 }
